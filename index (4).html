@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravilla Venkata Vikas — Portfolio</title>
+<meta name="description" content="Portfolio of Ravilla Venkata Vikas, B.Tech CSE student at LPU building IoT, embedded and Python projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg:#0d1a2b;
+    --bg-deep:#0a1421;
+    --panel:#122a44;
+    --panel-line: rgba(110,198,255,0.14);
+    --grid-line: rgba(110,198,255,0.055);
+    --hair: rgba(143,180,210,0.22);
+    --text:#e9f1fa;
+    --muted:#8fa9c4;
+    --cyan:#6ec6ff;
+    --amber:#f2a35c;
+    --green:#7ed893;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background-color:var(--bg);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 34px 34px;
+    color:var(--text);
+    font-family:'IBM Plex Sans', Arial, sans-serif;
+    line-height:1.6;
+    font-size:16px;
+  }
+
+  a{ color:inherit; }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  .wrap{
+    width:min(920px, 88%);
+    margin:0 auto;
+  }
+
+  section{ padding:88px 0; }
+
+  .rule{
+    border:none;
+    border-top:1px solid var(--hair);
+  }
+
+  /* ---------- header strip ---------- */
+
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(10,20,33,0.86);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--hair);
+  }
+
+  header nav{
+    width:min(920px, 88%);
+    margin:0 auto;
+    height:56px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  header .mark{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--cyan);
+    letter-spacing:0.02em;
+  }
+
+  header ul{
+    list-style:none;
+    display:flex;
+    gap:26px;
+  }
+
+  header a{
+    font-size:14px;
+    color:var(--muted);
+    text-decoration:none;
+  }
+
+  header a:hover{ color:var(--text); }
+
+  /* ---------- hero ---------- */
+
+  #hero{
+    padding-top:72px;
+    padding-bottom:72px;
+  }
+
+  .status-strip{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:26px;
+  }
+
+  .chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--cyan);
+    border:1px solid var(--panel-line);
+    padding:5px 11px;
+    background:rgba(110,198,255,0.05);
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+
+  h1{
+    font-size:clamp(38px, 5.4vw, 58px);
+    line-height:1.08;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+
+  .role{
+    margin-top:14px;
+    color:var(--muted);
+    font-size:19px;
+    max-width:46ch;
+  }
+
+  .hero-copy{
+    margin-top:22px;
+    color:var(--muted);
+    max-width:58ch;
+  }
+
+  .hero-links{
+    margin-top:30px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    display:inline-block;
+    padding:10px 18px;
+    border:1px solid var(--panel-line);
+    font-size:14px;
+    text-decoration:none;
+    color:var(--text);
+  }
+
+  .btn.solid{
+    background:var(--cyan);
+    color:#06121f;
+    border-color:var(--cyan);
+    font-weight:600;
+  }
+
+  .btn:hover{ border-color:var(--cyan); }
+
+  /* schematic panel */
+
+  .schematic{
+    border:1px solid var(--panel-line);
+    background:var(--panel);
+    padding:22px;
+    position:relative;
+  }
+
+  .schematic .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:14px;
+  }
+
+  .schematic svg{ display:block; width:100%; height:auto; }
+
+  /* ---------- section headings ---------- */
+
+  .head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:38px;
+  }
+
+  .head .idx{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--cyan);
+    font-size:13px;
+  }
+
+  .head h2{
+    font-size:clamp(24px, 3.2vw, 32px);
+    font-weight:600;
+  }
+
+  /* ---------- about / skills spec sheet ---------- */
+
+  #about .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:44px;
+  }
+
+  #about p{ color:var(--muted); max-width:56ch; }
+
+  #about p + p{ margin-top:14px; }
+
+  .spec-sheet{
+    border:1px solid var(--panel-line);
+  }
+
+  .spec-row{
+    display:grid;
+    grid-template-columns: 130px 1fr;
+    padding:13px 16px;
+    border-bottom:1px solid var(--panel-line);
+    gap:14px;
+  }
+
+  .spec-row:last-child{ border-bottom:none; }
+
+  .spec-row .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--cyan);
+    padding-top:2px;
+  }
+
+  .spec-row .v{
+    color:var(--text);
+    font-size:14.5px;
+  }
+
+  /* ---------- project timeline ---------- */
+
+  .timeline{
+    position:relative;
+    padding-left:26px;
+  }
+
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:6px;
+    bottom:6px;
+    width:1px;
+    background:var(--panel-line);
+  }
+
+  .node{
+    position:relative;
+    padding-bottom:44px;
+  }
+
+  .node:last-child{ padding-bottom:0; }
+
+  .node::before{
+    content:"";
+    position:absolute;
+    left:-30px;
+    top:6px;
+    width:9px;
+    height:9px;
+    background:var(--bg);
+    border:2px solid var(--cyan);
+  }
+
+  .node.upcoming::before{ border-color:var(--amber); }
+
+  .node-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+
+  .node-top .when{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  .status{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    padding:2px 8px;
+    border:1px solid var(--green);
+    color:var(--green);
+  }
+
+  .status.upcoming{
+    border-color:var(--amber);
+    color:var(--amber);
+    border-style:dashed;
+  }
+
+  .node h3{
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+
+  .node h4{
+    font-size:14px;
+    color:var(--muted);
+    font-weight:400;
+    margin-bottom:10px;
+  }
+
+  .node ul{
+    list-style:none;
+    color:var(--muted);
+    font-size:14.5px;
+  }
+
+  .node ul li{
+    padding-left:14px;
+    position:relative;
+    margin-bottom:5px;
+  }
+
+  .node ul li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--panel-line);
+  }
+
+  .stack{
+    margin-top:12px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+
+  .stack span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--cyan);
+    border:1px solid var(--panel-line);
+    padding:3px 8px;
+  }
+
+  /* ---------- certificates / achievements ---------- */
+
+  .two-col{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:44px;
+  }
+
+  .list-plain{ list-style:none; }
+
+  .list-plain li{
+    padding:14px 0;
+    border-bottom:1px solid var(--panel-line);
+    color:var(--muted);
+    font-size:14.5px;
+  }
+
+  .list-plain li strong{
+    color:var(--text);
+    display:block;
+    font-size:15.5px;
+    font-weight:500;
+    margin-bottom:3px;
+  }
+
+  .list-plain li:first-child{ padding-top:0; }
+
+  /* ---------- education ---------- */
+
+  .edu-row{
+    display:grid;
+    grid-template-columns: 1fr auto;
+    gap:14px;
+    padding:18px 0;
+    border-bottom:1px solid var(--panel-line);
+    align-items:baseline;
+  }
+
+  .edu-row:last-child{ border-bottom:none; }
+
+  .edu-row h3{ font-size:17px; font-weight:600; }
+
+  .edu-row p{ color:var(--muted); font-size:14px; margin-top:3px; }
+
+  .edu-row .score{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--cyan);
+    font-size:15px;
+    white-space:nowrap;
+  }
+
+  /* ---------- contact / footer ---------- */
+
+  #contact{
+    text-align:left;
+  }
+
+  .contact-links{
+    margin-top:24px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  footer{
+    padding:26px 0;
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    border-top:1px solid var(--hair);
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 760px){
+    header ul{ display:none; }
+    .hero-grid{ grid-template-columns:1fr; }
+    #about .about-grid{ grid-template-columns:1fr; }
+    .two-col{ grid-template-columns:1fr; }
+    .spec-row{ grid-template-columns: 100px 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <span class="mark">RVV / 01</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="hero">
+  <div class="wrap">
+
+    <div class="status-strip">
+      <span class="chip">3rd semester · LPU</span>
+      <span class="chip">84.7% aggregate</span>
+      <span class="chip">EME Scholarship</span>
+    </div>
+
+    <div class="hero-grid">
+
+      <div>
+        <h1>Ravilla Venkata Vikas</h1>
+        <p class="role">B.Tech Computer Science student building IoT hardware, embedded systems and Python projects, one semester at a time.</p>
+        <p class="hero-copy">Currently in my third semester at Lovely Professional University, working through a running list of projects that pairs sensors and microcontrollers with software — from an obstacle-sensing stick built in Class 7 to a solar-powered system that tracks crow health across a city.</p>
+
+        <div class="hero-links">
+          <a class="btn solid" href="#projects">See the projects</a>
+          <a class="btn" href="mailto:ravillavenkatavikas01@gmail.com">Email me</a>
+        </div>
+      </div>
+
+      <div class="schematic">
+        <div class="label mono">// current build</div>
+        <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg">
+          <rect x="90" y="90" width="60" height="40" fill="none" stroke="#6ec6ff" stroke-width="1.4"/>
+          <text x="120" y="114" text-anchor="middle" fill="#e9f1fa" font-family="IBM Plex Mono, monospace" font-size="11">ESP32</text>
+
+          <line x1="90" y1="100" x2="30" y2="100" stroke="#6ec6ff" stroke-width="1.2"/>
+          <circle cx="30" cy="100" r="4" fill="none" stroke="#6ec6ff" stroke-width="1.2"/>
+          <text x="24" y="90" text-anchor="end" fill="#8fa9c4" font-family="IBM Plex Mono, monospace" font-size="10">GPS</text>
+
+          <line x1="90" y1="120" x2="30" y2="120" stroke="#f2a35c" stroke-width="1.2"/>
+          <circle cx="30" cy="120" r="4" fill="none" stroke="#f2a35c" stroke-width="1.2"/>
+          <text x="24" y="132" text-anchor="end" fill="#8fa9c4" font-family="IBM Plex Mono, monospace" font-size="10">valve</text>
+
+          <line x1="150" y1="100" x2="210" y2="100" stroke="#6ec6ff" stroke-width="1.2"/>
+          <circle cx="210" cy="100" r="4" fill="none" stroke="#6ec6ff" stroke-width="1.2"/>
+          <text x="216" y="90" fill="#8fa9c4" font-family="IBM Plex Mono, monospace" font-size="10">cloud</text>
+
+          <line x1="150" y1="120" x2="210" y2="120" stroke="#7ed893" stroke-width="1.2"/>
+          <circle cx="210" cy="120" r="4" fill="none" stroke="#7ed893" stroke-width="1.2"/>
+          <text x="216" y="132" fill="#8fa9c4" font-family="IBM Plex Mono, monospace" font-size="10">alert</text>
+
+          <line x1="120" y1="90" x2="120" y2="40" stroke="#8fa9c4" stroke-width="1"/>
+          <circle cx="120" cy="40" r="4" fill="none" stroke="#8fa9c4" stroke-width="1.2"/>
+          <text x="120" y="28" text-anchor="middle" fill="#8fa9c4" font-family="IBM Plex Mono, monospace" font-size="10">solar</text>
+
+          <line x1="120" y1="130" x2="120" y2="185" stroke="#8fa9c4" stroke-width="1"/>
+          <circle cx="120" cy="185" r="4" fill="none" stroke="#8fa9c4" stroke-width="1.2"/>
+          <text x="120" y="200" text-anchor="middle" fill="#8fa9c4" font-family="IBM Plex Mono, monospace" font-size="10">sensors</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="about">
+  <div class="wrap">
+    <div class="head"><span class="idx mono">01</span><h2>About</h2></div>
+
+    <div class="about-grid">
+      <div>
+        <p>I'm a Computer Science and Engineering student at Lovely Professional University, Phagwara, currently in my third semester. My first project — a sensor-based stick for visually impaired users — was built back in Class 7, and I've been pairing hardware with code ever since.</p>
+        <p>Most of what I build sits at the intersection of IoT and practical problem-solving: monitoring systems, automated control, and the occasional Python game to keep the fundamentals sharp. Alongside coursework, I've been recognised with the EME Scholarship for academic performance.</p>
+      </div>
+
+      <div class="spec-sheet mono">
+        <div class="spec-row"><div class="k">languages</div><div class="v">Python, C, C++, JavaScript</div></div>
+        <div class="spec-row"><div class="k">web / iot</div><div class="v">HTML, CSS, JavaScript, IoT</div></div>
+        <div class="spec-row"><div class="k">data</div><div class="v">DBMS, SQL</div></div>
+        <div class="spec-row"><div class="k">tools</div><div class="v">Git, GitHub</div></div>
+        <div class="spec-row"><div class="k">working style</div><div class="v">Problem solving, project development, team collaboration, adaptability</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="projects">
+  <div class="wrap">
+    <div class="head"><span class="idx mono">02</span><h2>Projects, by semester</h2></div>
+
+    <div class="timeline">
+
+      <div class="node">
+        <div class="node-top">
+          <span class="when">Class 7</span>
+          <span class="status">Completed</span>
+        </div>
+        <h3>Blind Man Stick</h3>
+        <h4>An early hands-on project in IoT and problem-solving</h4>
+        <ul>
+          <li>Smart stick concept to help visually impaired users detect nearby obstacles</li>
+          <li>Provides alerts when an obstacle is sensed</li>
+        </ul>
+        <div class="stack"><span>IoT</span><span>Sensors</span></div>
+      </div>
+
+      <div class="node">
+        <div class="node-top">
+          <span class="when">1st Semester</span>
+          <span class="status">Completed</span>
+        </div>
+        <h3>Python Game Programming</h3>
+        <h4>Interactive games built to practice core programming logic</h4>
+        <ul>
+          <li>Dice Game, Rock-Paper-Scissors, Guess the Number, My Game, and Letter Guess</li>
+          <li>Applied functions, loops, conditional logic, user input, randomisation and exception handling</li>
+        </ul>
+        <div class="stack"><span>Python</span><span>random</span><span>string</span><span>exception handling</span></div>
+      </div>
+
+      <div class="node">
+        <div class="node-top">
+          <span class="when">2nd Semester</span>
+          <span class="status">Completed</span>
+        </div>
+        <h3>EcoCrow Virus Tracker</h3>
+        <h4>IoT-based wildlife monitoring across a crow population</h4>
+        <ul>
+          <li>Tracks 100+ crows and analyses health, movement and location patterns</li>
+          <li>Detects abnormal patterns and helps predict potential disease outbreaks</li>
+          <li>Sends alerts to rescue teams and flags risky dump areas for cleanup</li>
+        </ul>
+        <div class="stack"><span>MPU6050</span><span>Temp sensor</span><span>GPS</span><span>GSM</span><span>IoT Cloud</span><span>Google Maps</span><span>AI/ML</span><span>Telegram alerts</span><span>Solar power</span></div>
+      </div>
+
+      <div class="node upcoming">
+        <div class="node-top">
+          <span class="when">3rd Semester</span>
+          <span class="status upcoming">Upcoming</span>
+        </div>
+        <h3>Negotiation Tactics</h3>
+        <h4>A game project centred on strategy and communication</h4>
+        <ul>
+          <li>Focused on strategy, decision-making, communication and negotiation skills</li>
+        </ul>
+      </div>
+
+      <div class="node upcoming">
+        <div class="node-top">
+          <span class="when">4th Semester</span>
+          <span class="status upcoming">Upcoming</span>
+        </div>
+        <h3>Water Flow / Pipeline Control System</h3>
+        <h4>Automated monitoring and control across multiple pipeline zones</h4>
+        <ul>
+          <li>Centralised control of individual pipeline sections using automated valves</li>
+          <li>Remote ON/OFF control, pipeline monitoring and real-time automation</li>
+        </ul>
+        <div class="stack"><span>ESP32</span><span>Automated valves</span><span>Motor driver</span><span>Geared DC motors</span><span>IoT</span><span>Wi-Fi</span><span>Sensors</span></div>
+      </div>
+
+      <div class="node upcoming">
+        <div class="node-top">
+          <span class="when">5th Semester</span>
+          <span class="status upcoming">Upcoming</span>
+        </div>
+        <h3>AI Chat Bot</h3>
+        <h4>An interactive bot for understanding and responding to queries</h4>
+        <ul>
+          <li>Explores AI, conversational interfaces and intelligent automation</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="credentials">
+  <div class="wrap">
+    <div class="head"><span class="idx mono">03</span><h2>Certificates & achievements</h2></div>
+
+    <div class="two-col">
+      <ul class="list-plain">
+        <li><strong>Introduction to Cloud Computing</strong>Infosys Springboard</li>
+        <li><strong>EME Scholarship</strong>Directorate General of Electronics and Mechanical Engineers</li>
+      </ul>
+
+      <ul class="list-plain">
+        <li><strong>Awarded the EME Scholarship</strong>For excellence in academics</li>
+        <li><strong>Actively building real-world projects</strong>Across IoT and software development</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="education">
+  <div class="wrap">
+    <div class="head"><span class="idx mono">04</span><h2>Education</h2></div>
+
+    <div>
+      <div class="edu-row">
+        <div>
+          <h3>Lovely Professional University</h3>
+          <p>Bachelor of Technology — Computer Science and Engineering · 3rd semester · Phagwara, Punjab</p>
+        </div>
+        <span class="score">84.7%</span>
+      </div>
+
+      <div class="edu-row">
+        <div>
+          <h3>Pinegrove Junior College</h3>
+          <p>Higher Secondary Education</p>
+        </div>
+        <span class="score">92%</span>
+      </div>
+
+      <div class="edu-row">
+        <div>
+          <h3>Army Public School Bolarum</h3>
+          <p>Secondary Education</p>
+        </div>
+        <span class="score">78%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="contact">
+  <div class="wrap">
+    <div class="head"><span class="idx mono">05</span><h2>Get in touch</h2></div>
+    <p style="color:var(--muted); max-width:52ch;">Open to internships, IoT collaborations and anything that involves pairing hardware with code.</p>
+
+    <div class="contact-links">
+      <a class="btn solid" href="mailto:ravillavenkatavikas01@gmail.com">ravillavenkatavikas01@gmail.com</a>
+      <a class="btn" href="tel:+917680036888">+91 76800 36888</a>
+      <a class="btn" href="https://linkedin.com/in/vikas-ravilla-226380385/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Vikas-vks01" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://leetcode.com/u/vikas_me_org/" target="_blank" rel="noopener">LeetCode</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  RVV — B.Tech CSE, Lovely Professional University
+</footer>
+
+</body>
+</html>
